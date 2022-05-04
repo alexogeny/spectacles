@@ -1,0 +1,23 @@
+title = "alexogeny"
+description = "every freckled face needs its spectacles"
+base_url = "localhost"
+theme = "anatole-zola"
+default_language = "en"
+minify_html = true
+
+[markdown]
+highlight_code = true
+
+[extra.social]
+github = "alexogeny"
+twitter = "alexogeny"
+
+[languages.en.translations]
+about = "About"
+home = "Home"
+tags = "Tags"
+archive = "Archive"
+links = "Links"
+next_page = "Next Page"
+last_page = "Last Page"
+date_format = "%Y-%m-%d"

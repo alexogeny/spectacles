@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+  <link rel="short icon" href="{{ get_url(path="images/favicon.png") }}" type="image/x-icon"/>
+  <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  {% if config.generate_feed %}
+    {% block rss %}
+      <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
+    {% endblock rss %}
+  {% endif %}
+
+  {% block extra_head %}
+  {% endblock extra_head %}
+</head>
+<body>
+<div id="sidebar" class="animated fadeInDown">
+  <div class="logo-title">
+    <div class="title">
+      <img src={{ get_url(path="images/logo@2x.png" ) }} style="width:127px;" alt="logo"/>
+      <h3><a href="{{ get_url(path="@/_index.md") }}">{{ config.title }}</a></h3>
+      <div class="description">
+        <p>{{ config.description }}</p>
+      </div>
+    </div>
+  </div>
+  <ul class="social-links">
+    {%- if config.extra.social.github -%}
+    <li><a href="https://github.com/{{ config.extra.social.github }}">🐙</a></li>
+    {%- endif -%}
+    {%- if config.extra.social.twitter -%}
+    <li><a href="https://twitter.com/{{ config.extra.social.twitter }}">🐦</a></li>
+    {%- endif -%}
+    {% block more_social_link %}
+    {% endblock more_social_link %}
+  </ul>
+  <div class="footer">
+    {% block footer %}
+    <span>with thanks to caicai.me, longfangsong, &amp; getzola.org</span>
+    {% endblock footer %}
+  </div>
+</div>
+<div id="main">
+  <div class="page-top animated fadeInDown">
+    <div class="nav">
+      <li><a {% if current_path == "/" or current_path is starting_with("/page/") %}class="current"{% endif %} href="{{ get_url(path="@/_index.md") }}">{{ trans(key="home") }}</a></li><li><a {% if current_path is starting_with("/about") %}class="current"{% endif %} href="{{ get_url(path="@/about/_index.md") }}">{{ trans(key="about") }}</a></li>
+      {%- if config.extra.show.tags -%}
+      <li><a {% if current_path is starting_with("/tags") %}class="current"{% endif %} href="{{ get_url(path="@/_index.md") }}tags">{{ trans(key="tags") }}</a></li>
+      {%- endif -%}
+      <li><a {% if current_path is starting_with("/archive") %}class="current"{% endif %} href="{{ get_url(path="@/archive/_index.md") }}">{{ trans(key="archive") }}</a></li>
+      {%- if config.extra.show.links -%}
+      <li><a {% if current_path is starting_with("/links") %}class="current"{% endif %} href="{{ get_url(path="@/links/_index.md") }}">{{ trans(key="links") }}</a></li>
+      {%- endif -%}
+    </div>
+    <div class="information">
+      <div class="back_btn">
+        <li><a onclick="window.history.go(-1)" {% if current_path == "/" %}style="display:none;"{% endif %}><i class="fas fa-chevron-left"></i></a></li>
+      </div>
+      <div class="avatar"><img src="{{ get_url(path="images/avatar.jpg") }}"></div>
+    </div>
+  </div>
+  <div class="autopagerize_page_element">
+    <div class="content">
+    {% block content %}
+    {% endblock content %}
+    </div>
+  </div>
+</div>
+</body>
+</html>
