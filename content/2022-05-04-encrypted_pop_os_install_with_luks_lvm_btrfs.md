@@ -1,10 +1,15 @@
 +++
 title = "Encrypted Pop OS install with Luks, Lvm, Btrfs"
 date = 2022-05-04
+[taxonomies]
+tags = ["guide", "linux", "btrfs", "encryption"]
+[extra]
+summary = "Fresh install Pop_OS! using Luks and LVM to encrypt. Use the Btrfs filesystem."
 +++
 
 In this post I will go through the steps required to successfully install Pop_OS! with an encrypted Luks+LVM setup.
 Alongside this we'll configure Btrfs with reasonable defaults.
+
 
 Upon the completion of the guide you should have a fully encrypted setup that's performant and has enriched your
 understanding of how to install linux systems.
@@ -32,7 +37,7 @@ This will save us having to do a `sudo` for virtually every command from here on
 
 Use the `lsblk` command to show the disks and their storage blocks available on the system:
 
-```shell
+```bash
 $ lsblk
 NAME            MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
 sda               8:0    0   1.8T  0 disk
@@ -72,7 +77,7 @@ with two parity disks, or it's on a hosted git service like GitHub or GitLab, or
 with a solution for backing up.
 
 
-```shell
+```bash
 $ parted /dev/nvme0n1
 
 $ mklabel gpt # confirm yes
@@ -100,7 +105,7 @@ What we've done here:
 The resulting output looks something like this:
 
 
-```shell
+```bash
 $ unit MiB print
 Model: Force MP600 (nvme)
 Disk /dev/nvme0n1: 953870MiB
@@ -121,7 +126,7 @@ you, hard to guess, and long (at least 20 characters).
 Try to choose something that isn't identifiable or can't be socially engineered from that Facebook account you only
 check once a month.
 
-```shell
+```bash
 $ cryptsetup luksFormat /dev/nvme0n1p2
 WARNING!
 ========
@@ -133,7 +138,7 @@ Verify passphrase:
 
 Woop! You created an encrypted volume! Now let's go ahead and open it and then see what the mapper shows us:
 
-```shell
+```bash
 $ cryptsetup luksOpen /dev/nvme0n1p2 cryptdata
 Enter passphrase for /dev/nvme0n1p2:
 
@@ -155,7 +160,7 @@ want to create a single volume from multiple physical disks. Many possibilities!
 We're going to ignore that though and basically just create a logical volume inside the encrypted partition we set up
 in the previous step.
 
-```shell
+```bash
 $ pvcreate /dev/mapper/cryptdata
 Physical volume "/dev/mapper/cryptdata" successfully created
 
@@ -207,7 +212,7 @@ Now let's do stuff to set up Btrfs!
 
 First thing we need to do is mount the encrypted data.
 
-```shell
+```bash
 $ cryptsetup luksOpen /dev/nvme0n1p2 cryptdata
 Enter passphrase for /dev/nvme0n1p2 # same password as before
 mount -o subvolid=5,ssd,noatime,commit=120,compress=zstd:4,discard=async /dev/mapper/data-root /mnt
@@ -237,7 +242,7 @@ What we've done here is:
 
 Now let's go ahead and create the two subvolumes we'll need:
 
-```shell
+```bash
 $ btrfs subvolume create /mnt/@
 Create subvolume '/mnt/@'
 
@@ -276,7 +281,7 @@ spot where we store all our user data.
 We need to make sure that we update the `fstab` so that the system knows where our filesystems are and how to mount
 them.
 
-```shell
+```bash
 $ sed -i 's/btrfs  defaults/btrfs defaults,subvol=@,ssd,noatime,commit=120,compress=zstd,discard=async/' /mnt/@/etc/fstab
 
 $ echo "UUID=$(blkid -s UUID -o value /dev/mapper/data-root) /home btrfs defaults,subvol=@home,ssd,noatime,commit=120,compress=zstd,discard=async 0 0" >> /mnt/@/etc/fstab
@@ -289,7 +294,7 @@ The second line we've made the system aware of our `@hoem` sub volume (so that w
 
 To check we did it correctly, let's `cat` it:
 
-```shell
+```bash
 $ cat /mnt/@/etc/fstab
 # /etc/fstab: static file system information.
 #
@@ -310,13 +315,13 @@ the `subvol=@home` flag.
 We also need to make `crypttab` aware of our decision to perform discards asynchronously. `crypttab` performs a similar
 function to `fstab` but for making the system aware of any encryption schemes in use on disks:
 
-```shell
+```bash
 $ sed -i 's/luks/luks,discard/' /mnt/@/etc/crypttab
 ```
 
 Let's check we got what we expected:
 
-```shell
+```bash
 $ cat /mnt/@/etc/crypttab
 cryptdata UUID=4c8ae398-6c0a-4cbb-a013-5a524fc22338 none luks,discard
 ```
@@ -328,7 +333,7 @@ Basically we've just let the system know that the encrypted partition is making 
 Now we need to let the bootloader know about all of our newfangled changes! So let's go ahead and do that. First, mount
 the efi partition:
 
-```shell
+```bash
 $ mount /dev/nvme0n1p1 /mnt/@/boot/efi
 ```
 
@@ -336,7 +341,7 @@ Then we should update the current configuration to include the root subvolume we
 add ` rootflags=subvol=@` at the end of the last line. Your `Pop_OS-current.conf` should look something like this after
 updating:
 
-```shell
+```bash
 $ cat /mnt/@/boot/efi/loader/entries/Pop_OS-current.conf
 title Pop!_OS
 linux /EFI/Pop_OS-3738efe0-7616-4bed-8251-4814319492c2/vmlinuz.efi
@@ -347,7 +352,7 @@ options root=UUID=3738efe0-7616-4bed-8251-4814319492c2 ro quiet loglevel=0 syste
 We also need to add this flag to the kernel options (so the linux kernel knows where our sub volume is). Add
 `rootflags=subvol=@` to the user kernel options:
 
-```shell
+```bash
 $ cat /mnt/@/etc/kernelstub/configuration
 ...
   "user": {
@@ -372,7 +377,7 @@ of the changes we've made so that the system can successively boot into our sub 
 
 First let's mount the actual file system from our install:
 
-```shell
+```bash
 $ cd /
 
 $ umount -l /mnt
@@ -393,7 +398,7 @@ Cool! We've got our `/boot/efi`, the root filesystem at `/` which is ignored, an
 
 Now let's run the `update-initramfs` command and reboot:
 
-```shell
+```bash
 $ update-initramfs -c -k all
 
 $ exit
@@ -409,7 +414,7 @@ current shell and told the system to reboot.
 
 After the reboot, open the terminal and check the following
 
-```shell
+```bash
 $ sudo mount -av
 /boot/efi                : already mounted
 /                        : ignored
@@ -422,7 +427,7 @@ the initial user setup and it saves your changes.
 If you select "dock doesn't extend to edges" and it defaults back to
 "dock extends to edges" you probably had a typo in one of the steps above.
 
-```shell
+```bash
 $ sudo mount -v | grep /dev/mapper
 /dev/mapper/data-root on / type btrfs (rw,noatime,compress=zstd:3,ssd,discard=async,space_cache=v2,commit=120,subvolid=256,subvol=/@)
 /dev/mapper/data-root on /home type btrfs (rw,noatime,compress=zstd:3,ssd,discard=async,space_cache=v2,commit=120,subvolid=257,subvol=/@home)
@@ -431,7 +436,7 @@ $ sudo mount -v | grep /dev/mapper
 And if you haven't forked [my deployment repository](https://github.com/alexogeny/freckles), you may want to enable the
 filesystem trim timer if you're running on an SSD:
 
-```shell
+```bash
 sudo systemctl enable fstrim.timer
 ```
 
@@ -443,7 +448,7 @@ Now we just need to do cleanups and system updates!
 
 First thing, you should make sure that your system sources point to your region.
 
-```shell
+```bash
 $ sudo cat /etc/apt/sources.list.d/system.sources
 X-Repolib-Name: Pop_OS System Sources
 Enabled: yes
@@ -458,7 +463,7 @@ If you live in the US, great! Nothing to do! But if you're like me and live in A
 you'll need to update this to use your region's servers. Well, not _need_ to, but you _should_, so you can get stuff
 faster and more efficiently (saving the planet, and all, one byte at a time).
 
-```shell
+```bash
 sudo sed -i 's|http://us.|http://au.|' /etc/apt/sources.list.d/system.sources
 ```
 
@@ -469,7 +474,7 @@ Basically we just replace the `us` subdomain with the region we live in. In my c
 Now let's go ahead and remove `libreoffice`. Note that if you actually have a need for office software (for some reason)
 I'd advise against this:
 
-```shell
+```bash
 sudo apt purge libreoffice*
 ```
 
@@ -477,7 +482,7 @@ sudo apt purge libreoffice*
 
 Then let's go ahed with locale info:
 
-```shell
+```bash
 sudo locale-gen en_US.UTF.8
 sudo update-locale LANG=en_US.UTF-8
 ```
@@ -498,7 +503,7 @@ This will then automagically uninstall locales you don't need.
 
 Once that's out the way, we can actually update packages:
 
-```shell
+```bash
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 ```
 
@@ -508,13 +513,13 @@ The latest 22.04 install of Pop_OS! (and maybe Ubuntu 22.04) makes some strange 
 
 For instance, you'll need to run the following if you want easy screenshot software:
 
-```shell
+```bash
 sudo apt install gnome-screenshot
 ```
 
 And there still isn't default video recording software, so you'll need to:
 
-```shell
+```bash
 sudo apt install peek
 ```
 

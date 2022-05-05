@@ -4,6 +4,9 @@ base_url = "https://alexogeny.dev"
 theme = "anatole-zola"
 default_language = "en"
 minify_html = true
+taxonomies = [
+  {name = "tags"}
+]
 
 [markdown]
 highlight_code = true
@@ -11,6 +14,9 @@ highlight_code = true
 [extra.social]
 github = "alexogeny"
 twitter = "alexogeny"
+
+[extra.show]
+tags = true
 
 [languages.en.translations]
 about = "About"

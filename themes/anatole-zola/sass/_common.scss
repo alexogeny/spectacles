@@ -1,16 +1,23 @@
+// global
+$transition: .5s;
+$transition-mode: ease-out;
+
 html {
-  background-color: #fff;
+  background-color: $background-color;
   -webkit-font-smoothing: antialiased;
+  transition: background-color $transition $transition-mode;
 }
 
+
 body {
-  color: rgba(0, 0, 0, 0.5);
   font-family: 'PingHei', 'PingFang SC', Helvetica Neue, 'Work Sans', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
   font-size: 15px;
   width: 100%;
   margin: 0 auto 30px auto;
-  background-color: #fff;
   line-height: 1.6em;
+  transition: background-color $transition $transition-mode;
+  color: $text-color;
+  background-color: $background-color;
 }
 
 p {
@@ -21,6 +28,7 @@ p {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:link, a:visited {
@@ -30,11 +38,11 @@ a:link, a:visited {
   -o-transition: all .15s linear;
   -ms-transition: all .15s linear;
   transition: all .15s linear;
-  color: #424242;
+  color: $link-color;
 }
 
 a:hover, a:active {
-  color: #4786D6;
+  color: $link-hover-color;
 }
 
 img {
@@ -129,6 +137,7 @@ img {
   float: right;
   width: 75%;
   margin-top: 60px;
+  transition: background-color $transition $transition-mode;
 }
 
 .page-top {
@@ -136,9 +145,11 @@ img {
   position: fixed;
   right: 0;
   z-index: 3;
-  background-color: #fff;
   height: 60px;
-  border-bottom: 1px solid #f2f2f2;
+  transition: background-color $transition $transition-mode, border-bottom $transition $transition-mode;
+  background-color: $background-color;
+
+  border-bottom: 1px solid $border-color;
 
   .nav {
     list-style: none;
@@ -153,15 +164,15 @@ img {
     }
 
     a {
-      color: #5A5A5A;
+      color: $link-color;
     }
 
     a:hover {
-      color: #4786D6;
+      color: $link-hover-color
     }
 
     a.current {
-      color: #5A5A5A;
+      color: $link-active-color;
       padding-bottom: 22px;
       border-bottom: 1px solid #5A5A5A;
     }
@@ -195,18 +206,19 @@ img {
   }
 }
 
+
 #sidebar {
   width: 25%;
   -webkit-background-size: cover;
   background-size: cover;
-  background-color: #fff;
   height: 100%;
-  transition: 0.8s;
   top: 0;
   left: 0;
   position: fixed;
   z-index: 4;
-  border-right: 1px solid #f2f2f2;
+  transition: background-color $transition $transition-mode, border-right $transition $transition-mode;
+  background-color: $background-color;
+  border-right: 1px solid $border-color;
 
   .logo-title {
     text-align: center;
@@ -214,7 +226,7 @@ img {
 
     .description {
       font-size: 14px;
-      color: #565654;
+      color: $text-color;
     }
 
     .logo {
@@ -233,7 +245,7 @@ img {
 
       a {
         text-decoration: none;
-        color: #464646;
+        color: $link-color;
         font-size: 2rem;
         font-weight: bold;
       }
@@ -254,19 +266,20 @@ img {
     }
 
     a {
-      color: #565654;
+      color: $link-color;
     }
 
     a:hover {
-      color: #4786D6;
+      color: $link-hover-color;
     }
   }
 }
 
 
 .post {
-  background-color: #FFF;
   margin: 80px 30%;
+  transition: background-color $transition $transition-mode;
+  background-color: $background-color;
 
   .post-title {
     h1 {
@@ -282,7 +295,7 @@ img {
       font-size: 28px;
       line-height: 1;
       font-weight: 600;
-      color: #5f5f5f;
+      color: $text-color;
 
     }
 
@@ -291,7 +304,7 @@ img {
       letter-spacing: 1px;
       line-height: 1;
       font-weight: 600;
-      color: #464646;
+      color: $text-color;
       font-size: 22px;
       margin: 0;
 
@@ -300,7 +313,7 @@ img {
     a {
       text-decoration: none;
       letter-spacing: 1px;
-      color: #5f5f5f;
+      color: $link-color;
 
       &:hover {
         text-decoration: underline;
@@ -313,21 +326,21 @@ img {
     a {
       text-decoration: none;
       letter-spacing: 1px;
-      color: #4786D6;
+      color: $link-color;
     }
 
     a:hover {
-      color: #2F69B3;
+      color: $link-hover-color;
     }
 
     h3 {
-      color: #5F5F5F;
+      color: $text-color;
       font-size: 22px;
       font-weight: 600;
     }
 
     h4 {
-      color: #5F5F5F;
+      color: $text-color;
       font-size: 16px;
     }
 
@@ -347,9 +360,10 @@ img {
       font-family: Inconsolata, monospace, sans-serif;
       font-size: 0.85em;
       white-space: pre-wrap;
-      border: 1px solid #E3EDF3;
-      background: #f7f7f9;
-      color: #d14;
+      border: 1px solid $code-border-color;
+      background: $code-background-color;
+      transition: border $transition $transition-mode, background $transition $transition-mode, color $transition $transition-mode;
+      color: $code-color;
       border-radius: 2px;
     }
 
@@ -365,7 +379,8 @@ img {
       box-sizing: border-box;
       margin: 1.6em 0 1.6em -2em;
       padding: 0 0 0 1.6em;
-      border-left: #4a4a4a 0.2em solid;
+      border-left: $border-color 0.2em solid;
+      transition: border-left $transition $transition-mode;
     }
 
     .footnote-definition {
@@ -378,13 +393,14 @@ img {
 
   .post-footer {
     padding: 0 0 30px 0;
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid $border-color;
+    transition: border-bottom $transition $transition-mode;
 
 
     .meta {
       max-width: 100%;
       height: 25px;
-      color: #bbbbbb;
+      color: $text-color;
 
       .info {
         float: left;
@@ -397,11 +413,11 @@ img {
 
       a {
         text-decoration: none;
-        color: #bbbbbb;
+        color: $link-color;
         padding-right: 10px;
 
         &:hover {
-          color: #4786D6;
+          color: $link-hover-color;
         }
       }
 
@@ -431,7 +447,7 @@ img {
 
       a {
         text-decoration: none;
-        color: rgba(0, 0, 0, 0.44);
+        color: $text-color;
         font-weight: 400;
 
         &:hover {
@@ -445,7 +461,8 @@ img {
 .pagination {
   margin: 30px;
   padding: 0px 0 56px 0;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid $border-color;
+  transition: border-bottom $transition $transition-mode;
 
   ul {
     list-style: none;
@@ -473,32 +490,6 @@ img {
   }
 }
 
-
-.like-reblog-buttons {
-  float: right;
-}
-
-.like-button {
-  float: right;
-  padding: 0 0 0 10px;
-}
-
-.reblog-button {
-  float: right;
-  padding: 0;
-}
-
-#install-btn {
-  position: fixed;
-  bottom: 0px;
-  right: 6px
-}
-
-#disqus_thread {
-  margin: 30px;
-  border-bottom: 1px solid #f2f2f2;
-}
-
 .footer {
   clear: both;
   text-align: center;
@@ -508,14 +499,14 @@ img {
   position: absolute;
   width: 100%;
   padding-bottom: 20px;
-  color: #A6A6A6;
+  color: $text-color;
 
   a {
-    color: #A6A6A6;
+    color: $link-color;
   }
 
   a:hover {
-    color: #4786D6;
+    color: $link-hover-color;
   }
 }
 
@@ -537,7 +528,7 @@ img {
 
   .listing-title {
     font-size: 24px;
-    color: #666666;
+    color: $text-color;
     font-weight: 600;
     line-height: 2.2em;
   }
@@ -550,14 +541,14 @@ img {
 
       .post-time {
         float: right;
-        color: #C5C5C5;
+        color: $text-color;
       }
 
       a {
-        color: #8F8F8F;
+        color: $link-color;
 
         &:hover {
-          color: #4786D6;
+          color: $link-hover-color;
         }
       }
 
@@ -568,74 +559,15 @@ img {
     margin-bottom: 18px;
     .tagcount {
       float: right;
-      color: #fefefe;
+      color: $text-color;
       min-width: 24px;
       margin-right: 18px;
-      background: gray;
+      background: $background-color;
       padding-left: 6px;
       padding-right: 6px;
       border-radius: 1em;
       text-align: center;
     }
-  }
-}
-
-/* share */
-.share {
-  margin: 0px 30px;
-  display: inline-flex;
-}
-
-.evernote {
-  width: 32px;
-  height: 32px;
-  border-radius: 300px;
-  background-color: #3E3E3E;
-  margin-right: 5px;
-
-  a {
-    color: #fff;
-    padding: 11px;
-    font-size: 12px;
-  }
-
-  a:hover {
-    color: #ED6243;
-    padding: 11px;
-  }
-}
-
-.weibo {
-  width: 32px;
-  height: 32px;
-  border-radius: 300px;
-  background-color: #ED6243;
-  margin-right: 5px;
-
-  a {
-    color: #fff;
-    padding: 9px;
-  }
-
-  a:hover {
-    color: #BD4226;
-  }
-}
-
-.twitter {
-  width: 32px;
-  height: 32px;
-  border-radius: 300px;
-  background-color: #59C0FD;
-  margin-right: 5px;
-
-  a {
-    color: #fff;
-    padding: 9px;
-  }
-
-  a:hover {
-    color: #4B9ECE;
   }
 }
 
@@ -648,7 +580,7 @@ img {
   }
 }
 
-/* links*/
+/* links */
 .links {
   margin: 30px;
 
@@ -659,16 +591,6 @@ img {
   a {
     cursor: pointer;
   }
-}
-
-/* 评论样式 */
-
-.comment-count {
-  color: #666;
-}
-
-.tab-community {
-  color: #666;
 }
 
 .read_more {
@@ -682,12 +604,9 @@ img {
   float: left;
 }
 
-#fb_comments_container {
-  margin: 30px;
-}
 
 a.btn {
-  color: #868686;
+  color: $link-color;
   font-weight: 400;
 }
 
@@ -695,13 +614,13 @@ a.btn {
   display: inline-block;
   position: relative;
   outline: 0;
-  color: rgba(0, 0, 0, 0.44);
-  background: rgba(0, 0, 0, 0);
+  color: $text-color;
+  background: $background-color;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid $border-color;
   white-space: nowrap;
   font-weight: 400;
   font-style: normal;
@@ -829,6 +748,20 @@ a.btn {
       }
     }
   }
+  .post {
+    margin: 30px 50px;
+    text-align: justify;
+    h1, h2, h3, h4 {
+      text-align: center;;
+    }
+    .post-content {
+      pre {
+        width: auto;
+        margin-left: 0;
+        overflow: scroll;
+      }
+    }
+  }
   .page-top {
     width: 100%
   }
@@ -843,9 +776,6 @@ a.btn {
   }
   .footer {
     display: none;
-  }
-  .share {
-    display: grid;
   }
   .social-links {
     list-style: none;
