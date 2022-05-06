@@ -5,9 +5,9 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
   <link rel="short icon" href="{{ get_url(path="images/favicon.png") }}" type="image/x-icon"/>
-  <link rel="stylesheet" id='style-light' disabled href="{{ get_url(path="light.css") }}">
-  <link rel="stylesheet" id='style-dark' href="{{ get_url(path="dark.css") }}">
-  <script src="{{ get_url(path="js/theme.js")}}" type="text/javascript"></script>
+  <!-- <link rel="stylesheet" id='style-light' disabled href="{{ get_url(path="light.css") }}"> -->
+  <link rel="stylesheet" href="{{ get_url(path="theme.css") }}">
+  <!-- <script src="{{ get_url(path="js/theme.js")}}" type="text/javascript"></script> -->
   <title>{% block title %}{{ config.title }}{% endblock title %}</title>
   {% if config.generate_feed %}
     {% block rss %}
@@ -19,56 +19,63 @@
   {% endblock extra_head %}
 </head>
 <body>
-<div id="sidebar" class="animated fadeInDown">
-  <div class="logo-title">
-    <div class="title">
+  <a style="cursor:pointer" class='theme__toggler' onclick="toggleTheme()">🌒</a>
+<div class="sidebar hide__device--mobile">
+  <div class="flex--3"></div>
+  <div class="flex--2">
+    <div>
       <img src={{ get_url(path="images/logo@2x.png" ) }} style="width:127px;" alt="logo"/>
       <h3><a href="{{ get_url(path="@/_index.md") }}">{{ config.title }}</a></h3>
-      <div class="description">
+      <div>
         <p>{{ config.description }}</p>
       </div>
     </div>
   </div>
-  <ul class="social-links">
+  <nav class="flex--1">
     {%- if config.extra.social.github -%}
-    <li><a href="https://github.com/{{ config.extra.social.github }}">🐙</a></li>
+    <a href="https://github.com/{{ config.extra.social.github }}">🐙</a>
     {%- endif -%}
     {%- if config.extra.social.twitter -%}
-    <li><a href="https://twitter.com/{{ config.extra.social.twitter }}">🐦</a></li>
+    <a href="https://twitter.com/{{ config.extra.social.twitter }}">🐦</a>
     {%- endif -%}
     {% block more_social_link %}
     {% endblock more_social_link %}
-  </ul>
-  <div class="footer">
+  </nav>
+  <div class="flex--5"></div>
+  <div class="flex--1">
     {% block footer %}
-    <span>💖 caicai.me &amp; longfangsong &amp; getzola.org</span>
+    <span>made with 💖</span>
     {% endblock footer %}
   </div>
 </div>
-<div id="main">
-  <div class="page-top animated fadeInDown">
-    <div class="nav">
-      <li><a {% if current_path == "/" or current_path is starting_with("/page/") %}class="current"{% endif %} href="{{ get_url(path="@/_index.md") }}">{{ trans(key="home") }}</a></li><li><a {% if current_path is starting_with("/about") %}class="current"{% endif %} href="{{ get_url(path="@/about/_index.md") }}">{{ trans(key="about") }}</a></li>
+<div class="flex--9">
+  <div class="top">
+    <nav class="flex--11">
+      <a {% if current_path == "/" or current_path is starting_with("/page/") %}class="active"{% endif %} href="{{ get_url(path="@/_index.md") }}">{{ trans(key="home") }}</a>
+      <a {% if current_path is starting_with("/about") %}class="active"{% endif %} href="{{ get_url(path="@/about/_index.md") }}">{{ trans(key="about") }}</a>
       {%- if config.extra.show.tags -%}
-      <li><a {% if current_path is starting_with("/tags") %}class="current"{% endif %} href="{{ get_url(path="@/_index.md") }}tags">{{ trans(key="tags") }}</a></li>
+      <a {% if current_path is starting_with("/tags") %}class="active"{% endif %} href="{{ get_url(path="@/_index.md") }}tags">{{ trans(key="tags") }}</a>
       {%- endif -%}
-      <li><a {% if current_path is starting_with("/archive") %}class="current"{% endif %} href="{{ get_url(path="@/archive/_index.md") }}">{{ trans(key="archive") }}</a></li>
+      <a {% if current_path is starting_with("/archive") %}class="active"{% endif %} href="{{ get_url(path="@/archive/_index.md") }}">{{ trans(key="archive") }}</a>
       {%- if config.extra.show.links -%}
-      <li><a {% if current_path is starting_with("/links") %}class="current"{% endif %} href="{{ get_url(path="@/links/_index.md") }}">{{ trans(key="links") }}</a></li>
+      <a {% if current_path is starting_with("/links") %}class="active"{% endif %} href="{{ get_url(path="@/links/_index.md") }}">{{ trans(key="links") }}</a>
       {%- endif -%}
-    </div>
-    <div class="information">
-      <div class="back_btn">
-        <li><span style="cursor:pointer" id='themeChooser' onclick="toggleTheme()">🌒</span></li>
-        <script type="text/javascript">toggleThemeChooserContent()</script>
-      </div>
-      <div class="avatar"><img src="{{ get_url(path="images/avatar.jpg") }}"></div>
-    </div>
+    </nav>
+    <!-- <div class="flex--1"></div> -->
+    <nav class="flex--1 avatar">
+      <img src="{{ get_url(path="images/avatar.jpg") }}"></img>
+    </nav>
   </div>
-  <div class="autopagerize_page_element">
+  <div class="main">
     <div class="content">
-    {% block content %}
-    {% endblock content %}
+      <div class="flex--3 hide__device--mobile"></div>
+      <div class="flex--1 hide__device--desktop"></div>
+      <div class="flex--6" style="overflow-y:scroll">
+        {% block content %}
+        {% endblock content %}
+      </div>
+      <div class="flex--1 hide__device--desktop"></div>
+      <div class="flex--3 hide__device--mobile"></div>
     </div>
   </div>
 </div>
