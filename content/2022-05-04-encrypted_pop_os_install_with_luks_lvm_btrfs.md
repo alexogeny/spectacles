@@ -14,10 +14,10 @@ Alongside this we'll configure Btrfs with reasonable defaults.
 Upon the completion of the guide you should have a fully encrypted setup that's performant and has enriched your
 understanding of how to install linux systems.
 
-As with most shells, the `$` throughout this guide indicates any time that you'll be inputtting text. Where a shell
-line is not preceeded by `$` or is preceeded by a `#`, that's usually an output.
+As with most shells, the `$` throughout this guide indicates any time that you'll be inputting text. Where a shell
+line is not preceded by `$` or is preceded by a `#`, that's usually an output.
 
-I originally ready through [this guide by Willi Mutschler](https://mutschler.eu/linux/install-guides/pop-os-btrfs-20-04/)
+I originally read through [this guide by Willi Mutschler](https://mutschler.eu/linux/install-guides/pop-os-btrfs-20-04/)
 but noticed a distinct lack of explanations and human-readable language, so here I'm translating it into lay person
 language, adding my own spin on it, and also modifying it to fit Pop_OS! 22.04 updates, now that Ubuntu 22.04 is out
 for general public use.
@@ -290,7 +290,7 @@ $ echo "UUID=$(blkid -s UUID -o value /dev/mapper/data-root) /home btrfs default
 Basically with the first line we've told the system that the root partition should be loaded using the sane defaults
 we want for our `btrfs` system.
 
-The second line we've made the system aware of our `@hoem` sub volume (so that we can load our home dir later!).
+The second line we've made the system aware of our `@home` sub volume (so that we can load our home dir later!).
 
 To check we did it correctly, let's `cat` it:
 
@@ -480,7 +480,7 @@ sudo apt purge libreoffice*
 
 ### Step 6c - Locale
 
-Then let's go ahed with locale info:
+Then let's go ahead with locale info:
 
 ```bash
 sudo locale-gen en_US.UTF.8
