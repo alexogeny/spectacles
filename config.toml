@@ -1,7 +1,7 @@
 title = "alexogeny"
 description = "every freckled face needs its spectacles"
 base_url = "https://alexogeny.dev"
-theme = "anatole-zola"
+theme = "alexogeny"
 default_language = "en"
 minify_html = true
 taxonomies = [
