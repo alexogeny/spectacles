@@ -20,9 +20,9 @@ For the purposes of this guide I'm going to assume you know your way around `git
 Cloudflare pages supports a lot of site builders, even including vue, react, and nuxtjs. For the purposes of this build
 I chose Zola, since it seemed close to things like Hugo and Jekyll, but with modern tooling and is backed by rust.
 
-You can check out the full list of supported frameworks [here](https://developers.cloudflare.com/pages/framework-guides/).
+You can check out the full list of supported frameworks {{ external(title="here", source="https://developers.cloudflare.com/pages/framework-guides/") }}.
 
-If you'd like to read more about Zola, go ahead and check out [getzola.org](https://www.getzola.org/).
+If you'd like to read more about Zola, go ahead and check out {{ external(title="getzola.org", source="https://www.getzola.org/") }}.
 
 ## Step 2 - Configuration
 
@@ -30,11 +30,11 @@ First ensure you actually have a site that builds locally. You don't need to com
 cloudflare pages can do this for you.
 
 If you need, follow along with Zola's guides on initting a new project and get something up and running. For reference,
-the site you're reading right now is located at [github.com/alexogeny/spectacles](https://github.com/alexogeny/spectacles).
+the site you're reading right now is located at {{ external(title="github.com/alexogeny/spectacles", source="https://github.com/alexogeny/spectacles") }}.
 
 ### Step 2a - create the project
 
-Then navigate to [dash.cloudflare.com](https://dash.cloudflare.com) - create an account if you haven't already. Navigate
+Then navigate to {{ external(source="https://dash.cloudflare.com", title="dash.cloudflare.com") }} - create an account if you haven't already. Navigate
 to pages in the sidebar and select `Create a project`. You need to:
 
 - have a publicly hosted repository on github or gitlab

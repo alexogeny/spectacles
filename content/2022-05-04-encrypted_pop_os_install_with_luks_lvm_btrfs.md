@@ -433,7 +433,7 @@ $ sudo mount -v | grep /dev/mapper
 /dev/mapper/data-root on /home type btrfs (rw,noatime,compress=zstd:3,ssd,discard=async,space_cache=v2,commit=120,subvolid=257,subvol=/@home)
 ```
 
-And if you haven't forked [my deployment repository](https://github.com/alexogeny/freckles), you may want to enable the
+And if you haven't forked {{ external(title="my deployment repository", source="https://github.com/alexogeny/freckles") }}, you may want to enable the
 filesystem trim timer if you're running on an SSD:
 
 ```bash
@@ -531,9 +531,9 @@ you made it this far you must be really dedicated to the craft and want to do so
 Hopefully you learned a lot and maybe you did end up setting up your own encrypted Pop_OS! install!
 
 If you had any issues with the guide, please feel free to submit a Pull Request on
-[the repo](https://github.com/alexogeny/spectacles) where this guide is located.
+{{ external(title="the repo", source="https://github.com/alexogeny/spectacles") }} where this guide is located.
 
-If you have any comments or questions, [reach out on twitter](https://twitter.com/alexogeny).
+If you have any comments or questions, {{ external(title="reach out on twitter", source="https://twitter.com/alexogeny") }}.
 
 <br/>
 <br/>
