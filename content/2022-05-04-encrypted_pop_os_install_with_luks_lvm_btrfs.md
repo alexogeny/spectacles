@@ -17,10 +17,14 @@ understanding of how to install linux systems.
 As with most shells, the `$` throughout this guide indicates any time that you'll be inputting text. Where a shell
 line is not preceded by `$` or is preceded by a `#`, that's usually an output.
 
-I originally read through [this guide by Willi Mutschler](https://mutschler.eu/linux/install-guides/pop-os-btrfs-20-04/)
-but noticed a distinct lack of explanations and human-readable language, so here I'm translating it into lay person
-language, adding my own spin on it, and also modifying it to fit Pop_OS! 22.04 updates, now that Ubuntu 22.04 is out
-for general public use.
+I originally read through {{ external(title="this guide by Willi Mutschler", source="https://mutschler.eu/linux/install-guides/pop-os-btrfs-20-04/") }}
+but noticed a distinct lack of explanations and human-readable language, so here I'm writing my own version using that
+as inspiration. For the purposes of the license in the original, this is my own personal writing without referencing the
+original during the process. I'm including the context above so people can view the original guide and choose to use it
+if it makes more sense for their use case.
+
+Also another reason is that I could not find any Pop_OS! 22.04 updated guides, so this is probably one of the most up to
+date guides out there.
 
 ## Step 1 - booting up
 
