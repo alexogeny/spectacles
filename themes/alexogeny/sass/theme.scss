@@ -55,9 +55,10 @@ body {
   width: 100vw;
   margin: 0;
   @include display--flex($direction: row);
-  font-family: Microsoft yahei,sans-serif;
+  font-family: Microsoft yahei, sans-serif;
   background-color: var(--color--background);
   color: var(--color--text);
+  text-rendering: optimizeSpeed;
 }
 
 nav {
@@ -131,6 +132,18 @@ a {
   &.active {
     color: var(--color--link-active);
   }
+
+  &.external::after {
+    mask-size: cover;
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-left: 4px;
+    mask-image: url(/images/external.svg);
+    display: inline-flex;
+    background-color: var(--color--text);
+    transition: background-color .2s ease-in;
+  }
 }
 
 .sidebar {
@@ -156,18 +169,24 @@ a {
   }
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   text-transform: uppercase;
   font-weight: 50;
 }
 
 .spin {
   animation: rotation 30s infinite linear;
+  margin: 30px;
 }
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(-359deg);
   }
@@ -189,12 +208,15 @@ h1, h2, h3, h4 {
   display: flex;
 }
 
-.paginator--previous, .paginator--next {
+.paginator--previous,
+.paginator--next {
   flex: 2;
 }
+
 .paginator--previous {
   text-align: left;
 }
+
 .paginator--next {
   text-align: right;
 }

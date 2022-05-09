@@ -8,7 +8,7 @@
   <meta property="og:description" name="title" content="{% block ogdesc %}{% endblock ogdesc %}" />
   <meta property="og:site_name" content="alexogeny.dev" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
-  <link rel="short icon" href="{{ get_url(path="images/destiny.png") }}" type="image/x-icon" />
+  <link rel="short icon" href="{{ get_url(path="images/favicon.png") }}" type="image/x-icon" />
   <link rel="stylesheet" href="{{ get_url(path="theme.css") }}">
   <script src="{{ get_url(path="js/theme.js")}}" type="text/javascript"></script>
   <title>{% block title %}{% endblock title %}</title>
@@ -20,11 +20,7 @@
     <div class="flex--3"></div>
     <div class="flex--2">
       <div>
-        <img class="spin" src={{ get_url(path="images/destiny.png" ) }} style="width:127px;" alt="logo" />
-        <h3><a href="{{ get_url(path=" @/_index.md") }}">{{ config.title }}</a></h3>
-        <div>
-          <p>{{ config.description }}</p>
-        </div>
+        <img class="spin" src={{ get_url(path="images/destiny.png" ) }} style="width:127px;" alt="rotating image of a galaxy" />
       </div>
     </div>
     <nav class="flex--1">
@@ -48,7 +44,7 @@
     <div class="top element--sticky">
       <nav class="menu">
         <a {% if current_path=="/" or current_path is starting_with("/page/") %}class="active" {% endif %}
-          href="{{ get_url(path=" @/_index.md") }}">{{ trans(key="home") }}</a>
+          href="{{ get_url(path="@/_index.md") }}">{{ trans(key="home") }}</a>
         <a {% if current_path is starting_with("/about") %}class="active" {% endif %} href="{{ get_url(path="@/about/_index.md") }}">{{ trans(key="about") }}</a>
         {%- if config.extra.show.tags -%}
         <a {% if current_path is starting_with("/tags") %}class="active" {% endif %} href="{{ get_url(path="@/_index.md") }}tags">{{ trans(key="tags") }}</a>
@@ -59,7 +55,7 @@
         {%- endif -%}
       </nav>
       <nav class="flex--1 avatar">
-        <img src="{{ get_url(path="images/avatar.jpg") }}" alt="avatar" />
+        <img src="{{ get_url(path="images/avatar.jpg") }}" alt="avatar of the site owner" />
       </nav>
     </div>
     <div class="main">
@@ -73,6 +69,7 @@
       </div>
     </div>
   </div>
+  <script src="{{ get_url(path="js/link.js")}}" type="text/javascript"></script>
 </body>
 
 </html>
