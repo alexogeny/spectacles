@@ -17,12 +17,12 @@ $brkpnt--tablet: 1280px;
   --color--border: #424242;
   --color--background: #242424;
   --color--text: #d7d7d7;
-  --color--link: lightcoral;
+  --color--link: #d280f0;
   --color--code: pink;
   --color--code-border: #595252;
   --color--code-bg: #484341;
-  --color--link-active: #ffe3e3;
-  --color--link-hover: rgb(247, 181, 181);
+  --color--link-active: #ffdd8c;
+  --color--link-hover: rgb(140, 90, 249);
   --theme: "🌒"
 }
 
@@ -159,6 +159,18 @@ a {
 h1, h2, h3, h4 {
   text-transform: uppercase;
   font-weight: 50;
+}
+
+.spin {
+  animation: rotation 30s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
 }
 
 .theme__toggler {
