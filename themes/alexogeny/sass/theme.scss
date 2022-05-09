@@ -109,7 +109,6 @@ pre {
   padding: 30px;
   overflow-x: scroll;
   font-family: monospace;
-  // font-family: 'Courier New', Courier, monospace;
   border-radius: 10px;
 }
 
@@ -171,6 +170,21 @@ h1, h2, h3, h4 {
   &:after {
     content: var(--theme);
   }
+}
+
+.pagination {
+  margin: 20px;
+  display: flex;
+}
+
+.paginator--previous, .paginator--next {
+  flex: 2;
+}
+.paginator--previous {
+  text-align: left;
+}
+.paginator--next {
+  text-align: right;
 }
 
 .container--sticky {

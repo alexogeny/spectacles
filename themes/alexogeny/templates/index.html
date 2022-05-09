@@ -35,22 +35,16 @@
         </div>
       </section>
     {% endfor %}
-    <div class="pagination">
-		  <ul class="clearfix">
-        {% if paginator.next %}
-          <li class="next pagbuttons">
-            <a class="btn" role="navigation" href="{{ paginator.next }}">
-              {{ trans(key="next_page") }}
-            </a>
-          </li>
-        {% endif %}
-        {% if paginator.previous %}
-          <li class="pre pagbuttons">
-            <a class="btn" role="navigation" href="{{ paginator.previous }}">
-              {{ trans(key="last_page") }}
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
+    <nav class="pagination">
+      {% if paginator.previous %}
+      <a class="paginator--previous" role="navigation" href="{{ paginator.previous }}">
+        &larr;&nbsp;{{ trans(key="previous_page") }}
+      </a>
+      {% endif %}
+      {% if paginator.next %}
+      <a class="paginator--next" role="navigation" href="{{ paginator.next }}">
+        {{ trans(key="next_page") }}&nbsp;&rarr;
+      </a>
+      {% endif %}
+    </nav>
 {% endblock content %}
