@@ -5,6 +5,14 @@
 {% block ogtitle %}{{ trans(key="title") }} // {{ page.title }}{% endblock ogtitle %}
 {% block ogdesc %}{{ page.extra.summary }}{% endblock ogdesc %}
 
+{% block readingbar %}
+<div class="element--sticky" style="top:63px;border-bottom:none;">
+  <div class="read--container">
+    <div class="read--bar" id="readBar"></div>
+  </div>
+</div>
+{% endblock readingbar %}
+
 {% block content %}
 <article class="post">
   <h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
