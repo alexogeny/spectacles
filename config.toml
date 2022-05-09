@@ -1,4 +1,3 @@
-title = "alexogeny"
 description = "every freckled face needs its spectacles"
 base_url = "https://alexogeny.dev"
 theme = "alexogeny"
@@ -19,6 +18,7 @@ twitter = "alexogeny"
 tags = true
 
 [languages.en.translations]
+title = "alexogeny"
 about = "About"
 home = "Home"
 tags = "Tags"

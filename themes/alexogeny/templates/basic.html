@@ -7,9 +7,7 @@
   <link rel="short icon" href="{{ get_url(path="images/destiny.png") }}" type="image/x-icon"/>
   <link rel="stylesheet" href="{{ get_url(path="theme.css") }}">
   <script src="{{ get_url(path="js/theme.js")}}" type="text/javascript"></script>
-  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
-  {% block extra_head %}
-  {% endblock extra_head %}
+  <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
   <a style="cursor:pointer" id="themeToggler" class='theme__toggler' onclick="toggleTheme()"></a>

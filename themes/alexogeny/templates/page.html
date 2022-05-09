@@ -1,6 +1,6 @@
 {% extends "basic.html" %}
 
-{% block title %}{{ config.title }} • {{ page.title }}{% endblock title %}
+{% block title %}{{ trans(key="title") }} // {{ page.title }}{% endblock title %}
 
 {% block content %}
 <article class="post">
