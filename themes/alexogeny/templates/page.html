@@ -2,6 +2,9 @@
 
 {% block title %}{{ trans(key="title") }} // {{ page.title }}{% endblock title %}
 
+{% block ogtitle %}{{ trans(key="title") }} // {{ page.title }}{% endblock ogtitle %}
+{% block ogdesc %}{{ page.extra.summary }}{% endblock ogdesc %}
+
 {% block content %}
 <article class="post">
   <h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
