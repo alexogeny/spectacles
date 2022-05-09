@@ -23,7 +23,7 @@
                     <span class="date">
                       {{ page.date | date(format=trans(key="date_format")) }}
                     </span>
-                  {% endif %}
+                  {% endif %}&nbsp;//&nbsp;
                   {% if page.taxonomies.tags %}
                     🔖
                     {% for tag in page.taxonomies.tags %}

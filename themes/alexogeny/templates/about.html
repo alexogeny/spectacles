@@ -1,7 +1,7 @@
 {% extends "basic.html" %}
 
 {% block content %}
-<article class="post animated fadeInDown">
+<article class="post">
   <h1><a href="{{ section.permalink }}"> {{ trans(key="about") }} </a></h1>
   <div class="post-content">{{ section.content | safe }}</div>
 </article>

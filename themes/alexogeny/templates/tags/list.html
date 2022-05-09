@@ -1,15 +1,13 @@
 {% extends "basic.html" %}
 
 {% block content %}
-<div class="archive animated fadeInDown">
-    <ul class="list-with-title">
-      <div class="listing-title">{{ trans(key="tags") }}</div>
-          {% for term in terms %}
-          <li class="tag-list-item">
-              <a class="tagname" href="{{ term.permalink }}">{{ term.name }}</a>
-              <span class="tagcount">{{ term.pages | length }}</span>
-          </li>
-          {% endfor %}
-    </ul>
-</div>
+<article class="post">
+    <h1>{{trans(key="tags")}}</h1>
+    {% for term in terms %}
+    <div>
+        // <a class="tagname" href="{{ term.permalink }}">{{ term.name }}</a>&nbsp;
+        <span class="tagcount">[{{ term.pages | length }}]</span>
+    </div>
+    {% endfor %}
+</article>
 {% endblock content %}
