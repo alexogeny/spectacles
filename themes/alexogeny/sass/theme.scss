@@ -208,16 +208,13 @@ h4 {
   display: flex;
 }
 
-.paginator--previous,
-.paginator--next {
-  flex: 2;
-}
-
 .paginator--previous {
+  @include flex(2);
   text-align: left;
 }
 
 .paginator--next {
+  @include flex(2);
   text-align: right;
 }
 
@@ -230,6 +227,7 @@ h4 {
   top: 0;
   background-color: var(--color--background);
   border-bottom: 1px solid var(--color--border);
+  z-index: 1;
 }
 
 .main {
