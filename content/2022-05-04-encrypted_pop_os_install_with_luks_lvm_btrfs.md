@@ -440,7 +440,7 @@ filesystem trim timer if you're running on an SSD:
 sudo systemctl enable fstrim.timer
 ```
 
-## Step 6 - Update the ssytem and reboot
+## Step 6 - Update the system and reboot
 
 Now we just need to do cleanups and system updates!
 
