@@ -1,16 +1,18 @@
+function checkTheme () {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  return localStorage.getItem('theme') ? localStorage.getItem('theme') : prefersDark ? 'dark' : 'light'
+}
+
 function toggleTheme () {
-  const theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark'
+  const theme = checkTheme()
   const newTheme = theme === 'dark' ? 'light' : 'dark'
   localStorage.setItem('theme', newTheme)
   setTheme(newTheme)
 }
 
-function setTheme (theme) {
-  document.documentElement.setAttribute('data-theme', theme)
-}
+const setTheme = (theme) => document.documentElement.setAttribute('data-theme', theme)
 
-const theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark'
-setTheme(theme)
+setTheme(checkTheme())
 
 window.onload = function () {
   const readBar = document.querySelector('#readBar')
