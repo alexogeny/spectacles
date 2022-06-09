@@ -15,37 +15,13 @@
 </head>
 
 <body>
-  <a style="cursor:pointer" id="themeToggler" class='theme__toggler' onclick="toggleTheme()"></a>
-  <div class="sidebar">
-    <div class="flex--3"></div>
-    <div class="flex--2">
-      <div>
-        <img class="spin" src={{ get_url(path="images/destiny.png" ) }} style="width:127px;" alt="rotating image of a galaxy" />
-      </div>
-    </div>
-    <nav class="flex--1">
-      {%- if config.extra.social.github -%}
-      <a href="https://github.com/{{ config.extra.social.github }}">🐙</a>
-      {%- endif -%}
-      {%- if config.extra.social.twitter -%}
-      <a href="https://twitter.com/{{ config.extra.social.twitter }}">🐦</a>
-      {%- endif -%}
-      {% block more_social_link %}
-      {% endblock more_social_link %}
-    </nav>
-    <div class="flex--5"></div>
-    <div class="flex--1 footer">
-      {% block footer %}
-      <span>made with 💕</span>
-      {% endblock footer %}
-    </div>
-  </div>
+  <a style="cursor:pointer" id="themeToggler" class='theme__toggler noprint' onclick="toggleTheme()"></a>
   <div class="flex--9 container--sticky" id="readScroller">
-    <div class="top element--sticky">
+    <div class="top element--sticky noprint">
       <nav class="menu">
         <a {% if current_path=="/" or current_path is starting_with("/page/") %}class="active" {% endif %}
           href="{{ get_url(path="@/_index.md") }}">{{ trans(key="home") }}</a>
-        <a {% if current_path is starting_with("/about") %}class="active" {% endif %} href="{{ get_url(path="@/about/_index.md") }}">{{ trans(key="about") }}</a>
+        <a {% if current_path is starting_with("/resume") %}class="active" {% endif %} href="{{ get_url(path="@/resume/_index.md") }}">{{ trans(key="resume") }}</a>
         {%- if config.extra.show.tags -%}
         <a {% if current_path is starting_with("/tags") %}class="active" {% endif %} href="{{ get_url(path="@/_index.md") }}tags">{{ trans(key="tags") }}</a>
         {%- endif -%}
@@ -58,7 +34,7 @@
         <img src="{{ get_url(path="images/avatar.jpg") }}" alt="avatar of the site owner" />
       </nav>
     </div>
-      {% block readingbar %}{% endblock readingbar %}
+    {% block readingbar %}{% endblock readingbar %}
     <div class="main">
       <div class="content">
         <div class="filler"></div>
@@ -68,6 +44,12 @@
         </div>
         <div class="filler"></div>
       </div>
+      {% block footer %}
+      <div class="footer">
+        <a href="https://gitlab.com/alexogeny">🦊</a>
+        <a href="https://github.com/alexogeny">🐙</a>
+      </div>
+      {% endblock footer %}
     </div>
   </div>
 </body>

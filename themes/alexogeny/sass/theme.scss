@@ -230,12 +230,23 @@ h4 {
   z-index: 1;
 }
 
+.footer {
+  margin: 20px;
+  text-align: center;
+
+  a {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
 .read--container {
   width: 100%;
   height: 3px;
   z-index: 1;
   top: -1px;
 }
+
 .read--bar {
   height: 3px;
   width: 0;
@@ -260,6 +271,31 @@ h4 {
   }
 }
 
+.rev {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+
+  &.rev__mailto {
+    &:before {
+      content: 'ved.'
+    }
+
+    &:after {
+      content: '@llun'
+    }
+  }
+
+  &.rev__tel {
+    &:before {
+      content: '219 204 '
+    }
+
+    &:after {
+      content: ' 16+'
+    }
+  }
+}
+
 @media (max-width: $brkpnt--tablet) {
   body {
     @include display--flex($direction: column);
@@ -279,5 +315,54 @@ h4 {
 
   .sidebar {
     margin: 30px 0;
+  }
+}
+
+.print {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 0 !important;
+    size: A4 portrait;
+  }
+
+  body {
+    padding: 30px !important;
+  }
+
+  .print {
+    display: block;
+  }
+
+  .noprint, h1 {
+    display: none;
+  }
+
+  article {
+
+    p,
+    h2,
+    h3,
+    h4,
+    ul {
+      margin: 0 !important;
+      margin-bottom: 8px !important;
+    }
+
+    h2,
+    h3,
+    h4 {
+      margin-top: 6px !important;
+      text-align: center;
+    }
+
+    p {
+      text-align: justify;
+    }
+    .contact {
+      text-align: center;
+    }
   }
 }

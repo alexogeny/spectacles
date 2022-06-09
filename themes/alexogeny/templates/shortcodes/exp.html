@@ -1,0 +1,5 @@
+<span id="{{id}}"></span>
+<script>
+  const delta{{id}} = Math.floor((new Date() - Date.parse("01 Jan {{y}}")) / (1000 * 60 * 60 * 24 * 365));
+  document.getElementById("{{id}}").innerHTML = delta{{id}} < 1 ? '&lt; 1 yr' : delta{{id}} == 1 ? '&gt; 1 yr' : `&gt; ${delta{{id}}} yrs`;
+</script>

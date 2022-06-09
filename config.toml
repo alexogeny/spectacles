@@ -19,7 +19,7 @@ tags = true
 
 [languages.en.translations]
 title = "alexogeny"
-about = "About"
+resume = "resume"
 home = "Home"
 tags = "Tags"
 archive = "Archive"
