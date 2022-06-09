@@ -271,28 +271,31 @@ h4 {
   }
 }
 
-.rev {
+.rev__mailto,
+.rev__tel {
   unicode-bidi: bidi-override;
   direction: rtl;
+  display: inline-block;
+  margin-right: 8px;
+}
 
-  &.rev__mailto {
-    &:before {
-      content: 'ved.'
-    }
-
-    &:after {
-      content: '@llun'
-    }
+.rev__mailto {
+  &:before {
+    content: 'ved.'
   }
 
-  &.rev__tel {
-    &:before {
-      content: '219 204 '
-    }
+  &:after {
+    content: '@llun'
+  }
+}
 
-    &:after {
-      content: ' 16+'
-    }
+.rev__tel {
+  &:before {
+    content: '219 204 '
+  }
+
+  &:after {
+    content: ' 16+'
   }
 }
 
@@ -336,7 +339,8 @@ h4 {
     display: block;
   }
 
-  .noprint, h1 {
+  .noprint,
+  h1 {
     display: none;
   }
 
@@ -361,6 +365,7 @@ h4 {
     p {
       text-align: justify;
     }
+
     .contact {
       text-align: center;
     }

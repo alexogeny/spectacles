@@ -10,10 +10,8 @@ paginate_by = 0
 
 ## alex mcneill
 
-<div class="contact">{{ rev(kind="mailto", content="ynegoxela") }} | {{ rev(kind="tel", content="024") }}</div>
-
+<div class="print">{{ rev(kind="mailto", content="ynegoxela") }}  {{ rev(kind="tel", content="024") }}</div>
 <div class="print">This resume is available online: {{ external(title="https://alexogeny.dev/resume", source="https://alexogeny.dev/resume") }}</div>
-
 
 ## bio
 
