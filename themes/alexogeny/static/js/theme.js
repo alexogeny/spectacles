@@ -22,3 +22,19 @@ window.onload = function () {
     readBar.style.setProperty('width', `${ width }%`)
   })
 }
+
+function yearDelta (delta) {
+  return delta < 1 ? '&lt; 1 yr' : delta === 1 ? '&gt; 1 yr' : `&gt; ${ delta } yrs`
+}
+
+window.addEventListener('load', function () {
+  document.querySelectorAll('.timer').forEach(timer => {
+    const delta = Math.floor((new Date() - Date.parse(`01 Jan ${ timer.title }`)) / (1000 * 60 * 60 * 24 * 365))
+    timer.innerHTML = yearDelta(delta)
+  })
+  document.querySelectorAll('.workexp').forEach(workexp => {
+    const period = workexp.title.split(':').map(x => parseInt(x))
+    const delta = (period[ 1 ] ? period[ 1 ] : new Date().getFullYear()) - period[ 0 ]
+    workexp.innerHTML = yearDelta(delta) + (period[ 1 ] ? '' : ' (I currently work here)')
+  })
+})

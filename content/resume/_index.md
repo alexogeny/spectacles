@@ -35,30 +35,30 @@ Outside of work you'll find me playing tennis, reading a book, or obsessing over
 
 #### Scripting &amp; Deployment
 
-- **Python** (fluent, {{ exp(id="python", y=2011) }})
-- **Ansible** (nearly fluent, {{ exp(id="ansible", y=2021) }})
-- **Docker** (advanced, {{ exp(id="docker", y=2020) }})
-- **CI (github actions, gitlab ci)** (advanced, {{ exp(id="ci", y=2018) }})
-- **APIs (rest, gql)** (advanced, {{ exp(id="apis", y=2014) }})
-- **Automation engineering (mocha, cypress)** (advanced, {{ exp(id="automation", y=2015) }})
-- **Cloudformation** (intermediate, {{ exp(id="cloudformation", y=2021) }})
+- **Python**, fluent, {{ exp(id="python", y=2011) }}
+- **Ansible**, nearly fluent, {{ exp(id="ansible", y=2021) }}
+- **Docker**, advanced, {{ exp(id="docker", y=2020) }}
+- **CI (github actions, gitlab ci)**, advanced, {{ exp(id="ci", y=2018) }}
+- **APIs (rest, gql)**, advanced, {{ exp(id="apis", y=2014) }}
+- **Automation engineering (mocha, cypress)**, advanced, {{ exp(id="automation", y=2015) }}
+- **Cloudformation**, intermediate, {{ exp(id="cloudformation", y=2021) }}
 
 #### Frontend
 
-- **Nodejs** (fluent, {{ exp(id="nodejs", y=2016) }})
-- **Typescript** (fluent, {{ exp(id="typescript", y=2016) }})
-- **React &amp; Redux** (fluent, {{ exp(id="react", y=2016) }})
-- **Prisma** (intermediate, {{ exp(id="prisma", y=2022) }})
+- **Nodejs**, fluent, {{ exp(id="nodejs", y=2016) }}
+- **Typescript**, fluent, {{ exp(id="typescript", y=2016) }}
+- **React &amp; Redux**, fluent, {{ exp(id="react", y=2016) }}
+- **Prisma**, intermediate, {{ exp(id="prisma", y=2022) }}
 
 #### Backend &amp; Databases
 
-- **PostgreSQL** (fluent, {{ exp(id="postgres", y=2014) }})
-- **GraphQL** (fluent, {{ exp(id="graphql", y=2021) }})
-- **PHP &amp; Laravel** (fluent, {{ exp(id="php", y=2011) }})
+- **PostgreSQL**, fluent, {{ exp(id="postgres", y=2014) }}
+- **GraphQL**, fluent, {{ exp(id="graphql", y=2021) }}
+- **PHP &amp; Laravel**, fluent, {{ exp(id="php", y=2011) }}
 
 ## experience
 
-**intelliHR** Software Engineer ({{ workexp(id="intelli", start=2021, end=0) }})
+**intelliHR**, Software Engineer, {{ workexp(id="intelli", start=2021, end=0) }}
 
 - engineering across the full stack (front, back, pipelines, design, &amp; testing)
 - agile ceremonies (standups, technical breakdowns, retrospectives, kickoffs, planning)
@@ -70,14 +70,14 @@ Outside of work you'll find me playing tennis, reading a book, or obsessing over
 - extensive creation of documentation and usage of collaborative tools
 - championed DX by introducing deployment repositories for developer quick start
 
-**AIRBUS** Reliability Analyst ({{ workexp(id="airbus", start=2017, end=2021) }})
+**AIRBUS**, Reliability Analyst, {{ workexp(id="airbus", start=2017, end=2021) }}
 
 - process automation and pipeline development
 - data visualisation and modelling for presentation to important stakeholders
 - sensitive data management (requiring security clearance)
 - continuous improvement of tooling and systems
 
-**Best Practice Australia** Web Developer ({{ workexp(id="bpa", start=2014, end=2017) }})
+**Best Practice Australia**, Web Developer, {{ workexp(id="bpa", start=2014, end=2017) }}
 
 - full stack development
 - systems administration including active directory, windows server, linux server, &amp; licensing
@@ -85,9 +85,9 @@ Outside of work you'll find me playing tennis, reading a book, or obsessing over
 
 ### education
 
-**Data Analytics** (Graduate Certificate, QUT, 2021)
+**Data Analytics**, Graduate Certificate, QUT, 2021
 
-**IT &amp; Corporate Systems Management** (Bachelor, QUT, 2014)
+**IT &amp; Corporate Systems Management**, Bachelor, QUT, 2014
 
 ### references
 
