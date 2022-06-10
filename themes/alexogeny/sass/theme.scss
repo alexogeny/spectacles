@@ -278,12 +278,12 @@ h4 {
   display: inline-block;
   margin-right: 8px;
 
-  &:before {
-    content: '219 204 024 16+ | ved.'
+  &::before {
+    content: "219 204 024 16+ | ved."
   }
 
-  &:after {
-    content: '@llun'
+  &::after {
+    content: "@llun"
   }
 }
 
