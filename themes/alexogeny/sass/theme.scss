@@ -146,6 +146,10 @@ a {
   }
 }
 
+.scroller::-webkit-scrollbar {
+  width: 0;
+}
+
 .sidebar {
   @include txt--center();
   @include flex(3);
@@ -254,6 +258,11 @@ h4 {
   transition: width 100ms ease;
 }
 
+#readScroller {
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+}
 .main {
   @include flex(9);
 }

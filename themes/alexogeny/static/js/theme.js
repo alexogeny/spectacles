@@ -16,11 +16,13 @@ setTheme(checkTheme())
 
 window.onload = function () {
   const readBar = document.querySelector('#readBar')
-  const contentElement = document.querySelector('#readScroller')
-  contentElement.addEventListener('scroll', e => {
-    let width = contentElement.scrollTop / (contentElement.scrollHeight - contentElement.clientHeight) * 100
-    readBar.style.setProperty('width', `${ width }%`)
-  })
+  if (readBar) {
+    const contentElement = document.querySelector('#readScroller')
+    contentElement.addEventListener('scroll', e => {
+      let width = contentElement.scrollTop / (contentElement.scrollHeight - contentElement.clientHeight) * 100
+      readBar.style.setProperty('width', `${ width }%`)
+    })
+  }
 }
 
 function yearDelta (delta) {
